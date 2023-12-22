@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cctype>
+#include <gtest/gtest.h>
 
 class Argument {
 private:
@@ -16,30 +17,27 @@ public:
         }
         return *this;
     }
+
     ~Argument() = default;
+
     void toUpper() {
         for (size_t i = 0; i < _value.size(); i++) {
             _value[i] = std::toupper(_value[i]);
         }
     }
+
     const std::string& getValue() const {
         return _value;
     }
 };
 
-int main(int argc, char **argv)
-{
-    if (argc < 2) {
-        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n";
-        return 1;
-    }
+TEST(ArgumentTest, ToUpper) {
+    Argument arg("test");
+    arg.toUpper();
+    ASSERT_EQ(arg.getValue(), "TEST");
+}
 
-    for (int i = 1; i < argc; i++) {
-        Argument arg(argv[i]);
-        arg.toUpper();
-        std::cout << arg.getValue() << ' ';
-    }
-    std::cout << '\n';
-
-    return 0;
+int main(int argc, char **argv) {
+    ::testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
