@@ -1,24 +1,18 @@
 #include <iostream>
 #include <string>
 #include <cctype>
-#include <gtest/gtest.h>
 
 class Argument {
 private:
     std::string _value;
 
 public:
-    Argument() = default;
-    Argument(const char* arg) : _value(arg) {}
-    Argument(const Argument& other) : _value(other._value) {}
-    Argument& operator=(const Argument& other) {
-        if (this != &other) {
-            _value = other._value;
-        }
-        return *this;
-    }
+    Argument() {}
+    ~Argument() {}
 
-    ~Argument() = default;
+    void setValue(const std::string& value) {
+        _value = value;
+    }
 
     void toUpper() {
         for (size_t i = 0; i < _value.size(); i++) {
@@ -31,13 +25,18 @@ public:
     }
 };
 
-TEST(ArgumentTest, ToUpper) {
-    Argument arg("test");
-    arg.toUpper();
-    ASSERT_EQ(arg.getValue(), "TEST");
-}
+int main(int argc, char *argv[]) {
+    if (argc >= 2) {
+        for (int i = 1; i < argc; i++) {
+            Argument argument;
+            argument.setValue(argv[i]);
+            argument.toUpper();
+            std::cout << argument.getValue() << " ";
+        }
+        std::cout << std::endl;
+    } else {
+        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
+    }
 
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+    return 0;
 }
