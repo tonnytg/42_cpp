@@ -1,25 +1,16 @@
-NAME = phonebook
-SRC = phonebook.cpp contact.cpp
-OBJ_DIR = obj
-OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.cpp=.o))
+NAME 	= phonebook
+FILES 	= *.cpp
 
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CC 	= c++ 
+CC_ARGS	=  -std=c++98 -Wall -Wextra -Werror
 
-all: $(NAME)
-
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-
-$(OBJ_DIR)/%.o: %.cpp
-	mkdir -p $(@D)
-	$(CC) $(CFLAGS) -c $< -o $@
+all:
+	$(CC) $(CC_ARGS) $(FILES) -o $(NAME)
 
 clean:
-	rm -rf $(OBJ_DIR)
+	rm -rf $(NAME)
 
-fclean: clean
-	rm -f $(NAME)
+fclean:	clean
 
 re: fclean all
 

@@ -5,16 +5,32 @@
 
 class Contact {
 private:
-    std::string _name;
-    std::string _phone;
+	int 		_id;
+	std::string	_firstname;
+	std::string _lastname;
+	std::string _nickname;
+	std::string _phonenumber;
+	std::string _darkestsecret;
 
 public:
+
 	Contact();
 	~Contact();
-    std::string GetName() const;
-	std::string GetPhone() const;
-    void SetName(const std::string& name);
-	void SetPhone(const std::string& phone);
+
+	int 		GetID() const ;
+	std::string GetFirstName() const;
+	std::string GetLastName() const;
+	std::string GetNickname() const;
+	std::string GetPhoneNumber() const;
+	std::string GetDarkestSecret() const;
+
+
+	bool SetID(int id);
+	bool SetFirstName(std::string firstname);
+	bool SetLastName(std::string lastname);
+	bool SetNickname(std::string nickname);
+	bool SetPhoneNumber(std::string phonenumber);
+	bool SetDarkestSecret(std::string darkestsecret);
 };
 
-#endif
+#endif // CONTACT_HPP

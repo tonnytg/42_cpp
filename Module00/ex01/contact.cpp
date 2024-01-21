@@ -1,27 +1,76 @@
-#include "phonebook.hpp"
+#include "Contact.hpp"
+#include <iostream>
+#include <string>
 
-Contact::Contact(int id, const std::string& name, const std::string& phone) {
-    _id = id;
-    _name = name;
-    _phone = phone;
+Contact::Contact() {};
+
+Contact::~Contact() {};
+
+int Contact::GetID() const {
+	return _id;
 }
 
-Contact::~Contact() {}
-
-void Contact::SetName(const std::string& name) {
-    _name = name;
+std::string Contact::GetFirstName() const {
+	return _firstname;
 }
 
-void Contact::SetPhone(const std::string& phone) {
-    _phone = phone;
+std::string Contact::GetLastName() const {
+	return _lastname;
 }
 
-int Contact::GetId() const {
-    return _id;
+std::string Contact::GetNickname() const {
+	return _nickname;
 }
 
-void Contact::ShowAllInfo() const {
-    std::cout << "ID: " << _id << std::endl;
-    std::cout << "Name: " << _name << std::endl;
-    std::cout << "Phone: " << _phone << std::endl;
+std::string Contact::GetPhoneNumber() const {
+	return _phonenumber;
+}
+
+std::string Contact::GetDarkestSecret() const {
+	return _darkestsecret;
+}
+
+bool Contact::SetID(int id) {
+	_id = id;
+	return true;
+}
+
+bool Contact::SetFirstName(std::string firstname) {
+	if (firstname.empty()) {
+		return false;
+	}
+	_firstname = firstname;
+	return true;
+}
+
+bool Contact::SetLastName(std::string lastname) {
+	if (lastname.empty()) {
+		return false;
+	}
+	_lastname = lastname;
+	return true;
+}
+
+bool Contact::SetNickname(std::string nickname) {
+	if (nickname.empty()) {
+		return false;
+	}
+	_nickname = nickname;
+	return true;
+}
+
+bool Contact::SetPhoneNumber(std::string phonenumber) {
+	if (phonenumber.empty()) {
+		return false;
+	}	
+	_phonenumber = phonenumber;
+	return true;
+}
+
+bool Contact::SetDarkestSecret(std::string darkestsecret) {
+	if (darkestsecret.empty()) {
+		return false;
+	}	
+	_darkestsecret = darkestsecret;
+	return true;
 }

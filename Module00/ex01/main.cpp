@@ -1,33 +1,68 @@
+#include "Phonebook.hpp"
 #include <iostream>
-#include "phonebook.hpp"
+
+void PrintMenu() {
+	std::cout << "Choose option (ADD, SEARCH or EXIT): ";
+}
+
+std::string GetInputOption() {
+	std::string option;
+
+	std::cin >> option;
+
+	return option;
+}
+
+Contact GetInputContact() {
+	Contact contact;
+	std::string FirstName, LastName, Nickname, PhoneNumber, DarkestSecret;
+
+	std::cout << "Insert First Name: ";
+	std::cin >> FirstName;
+	contact.SetFirstName(FirstName);
+
+	std::cout << "Insert Last Name: ";
+	std::cin >> LastName;
+	contact.SetLastName(LastName);
+
+	std::cout << "Insert Nickname: ";
+	std::cin >> Nickname;
+	contact.SetNickname(Nickname);
+
+	std::cout << "Insert Phone Number: ";
+	std::cin >> PhoneNumber;
+	contact.SetPhoneNumber(PhoneNumber);
+
+	std::cout << "Insert Darkest Secret: ";
+	std::cin >> DarkestSecret;
+	contact.SetDarkestSecret(DarkestSecret);		
+
+	return contact;
+}
 
 int main() {
-    Phonebook phonebook;
-    std::string command;
-    std::string name;
-    std::string phone;    
 
-    while (true) {
-        std::cout << "Digite um comando (ADD, SEARCH ou EXIT): ";
-        std::cin >> command;
+	Phonebook phonebook;
 
-        if (command == "ADD") {
+	std::string option;
+	while (true) {
 
-            std::cout << "Digite o nome do contato: ";
-            std::cin >> name;
-            std::cout << "Digite o telefone do contato: ";
-            std::cin >> phone;
-            if (!phonebook.AddContact(name, phone)) {
-                std::cout << "Não há espaço para adicionar mais contatos." << std::endl;
-            }
-        } else if (command == "SEARCH") {
-            phonebook.DisplayContacts();
-        } else if (command == "EXIT") {
-            break;
-        } else {
-            std::cout << "Comando inválido." << std::endl;
-        }
-    }
+		PrintMenu();
+		option = GetInputOption();
 
-    return 0;
+		if (option == "EXIT" ) {
+			break;
+		}
+		if (option == "ADD") {
+			std::cout << "ADD" << std::endl;
+
+			Contact contact = GetInputContact();
+			phonebook.Save(contact);
+		}
+		if (option == "SEARCH") {
+			std::cout << "SEARCH" << std::endl;
+			phonebook.ShowAllContacts();
+		}
+	}
+	return 0;
 }
