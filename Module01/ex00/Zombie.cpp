@@ -12,11 +12,11 @@ void Zombie::SetName(std::string name) {
 	_name = name;
 }
 
-void Zombie::announce( void ) {
+void announce( void ) {
 	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void Zombie::randomChump( std::string name ) {
+void randomChump( std::string name ) {
 	
 	Zombie *zombie;
 
@@ -27,3 +27,6 @@ void Zombie::randomChump( std::string name ) {
 
 	delete zombie;
 }
+
+Zombie* newZombie( std::string name );
+void randomChump( std::string name );

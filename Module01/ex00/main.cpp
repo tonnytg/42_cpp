@@ -19,25 +19,18 @@ std::string gerarNomeAleatorio(int size) {
 }
 
 int main() {
+    Zombie *zombie = new Zombie();
+    zombie->SetName("Antonio");
+    zombie->announce();
 
-	Zombie *zombie = new Zombie();
-
-	zombie->SetName("Antonio");
-
-	zombie->announce();
-
+    Zombie *zombie_new;
 	
-	Zombie *newZombie;
+	zombie_new = newZombie("Gomes");
 
-	newZombie = zombie->newZombie("Gomes");
+    randomChump(gerarNomeAleatorio(10));
 
-	newZombie->announce();
+    delete zombie;
+    delete zombie_new;
 
-	newZombie->randomChump(gerarNomeAleatorio(10));
-
-	delete newZombie;
-
-	delete zombie;
-
-	return 0;
+    return 0;
 }
