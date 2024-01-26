@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <ctime>
 
-std::string gerarNomeAleatorio(int size) {
+std::string genRandomName(int size) {
     std::string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
     std::string randomName = "";
 
@@ -27,7 +27,9 @@ int main() {
 	
 	zombie_new = newZombie("Gomes");
 
-    randomChump(gerarNomeAleatorio(10));
+	zombie_new->announce();
+
+    randomChump(genRandomName(10));
 
     delete zombie;
     delete zombie_new;
