@@ -5,6 +5,7 @@
 
 Phonebook::Phonebook() {
     _index = 0;
+    _hasValue = 0;
 }
 
 Phonebook::~Phonebook() {}
@@ -14,6 +15,7 @@ void Phonebook::Save(Contact contact) {
         _index = 0;
     }
     _index++;
+    _hasValue++;
     contact.SetID(_index);
     _contacts[_index - 1] = contact;
 }
@@ -49,7 +51,7 @@ void Phonebook::ShowAllContacts() {
         }
     }
 
-	std::cout << "Insert ID you want more infos: ";
+	std::cout << "Insert ID (Value must be int): ";
 	int InputID;
 	std::cin >> InputID;
 

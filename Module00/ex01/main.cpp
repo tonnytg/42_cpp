@@ -8,7 +8,7 @@ void PrintMenu() {
 std::string GetInputOption() {
 	std::string option;
 
-	std::cin >> option;
+	std::cin.eof() >> option;
 
 	return option;
 }
