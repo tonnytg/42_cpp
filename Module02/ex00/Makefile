@@ -1,4 +1,4 @@
-NAME 	= firstclassortodox
+NAME 	= orthodox
 FILES 	= *.cpp
 
 CC 	= c++ 
