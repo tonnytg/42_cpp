@@ -1,10 +1,16 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed() : _value(0) {}
+Fixed::Fixed() : _fixedPoint(0) {
+	std::cout << "Default constructor called" << std::endl;
+}
 
-Fixed::Fixed(const int value) : _value(value << _fractionalBits) {}
+Fixed::Fixed(const int value) : _fixedPoint(value << _fractionalBits) {
+	std::cout << "convert value to fractional bit" << std::endl;
+}
 
-Fixed::Fixed(const Fixed& other) : _value(other._value) {}
+Fixed::Fixed(const Fixed &other) : _fixedPoint(other._fixedPoint) {
+	std::cout << "Copy constructor called" << std::endl;
+}
 
 Fixed::~Fixed() {
 	std::cout << "Destructor called" << std::endl;
@@ -12,34 +18,18 @@ Fixed::~Fixed() {
 
 int Fixed::getRawBits() const {
     std::cout << "getRawBits member function called" << std::endl;
-    return _value;
+    return _fixedPoint;
 }
 
 void Fixed::setRawBits(int const raw) {
     std::cout << "setRawBits member function called" << std::endl;
-    _value = raw;
+    _fixedPoint = raw;
 }
 
 Fixed &Fixed::operator=(const Fixed &other) {
-    std::cout << "Assignation operator called" << std::endl;
+    std::cout << "Copy assignment operator called" << std::endl;
     if (this != &other) {
-        _value = other._value;
+        _fixedPoint = other._fixedPoint;
     }
     return *this;
-}
-
-Fixed Fixed::operator+(const Fixed& other) const {
-    return Fixed(_value + other._value);
-}
-
-Fixed Fixed::operator-(const Fixed& other) const {
-    return Fixed(_value - other._value);
-}
-
-Fixed Fixed::operator*(const Fixed &other) const {
-    return Fixed((_value * other._value) >> _fractionalBits);
-}
-
-Fixed Fixed::operator/(const Fixed& other) const {
-    return Fixed((_value << _fractionalBits) / other._value);
 }
