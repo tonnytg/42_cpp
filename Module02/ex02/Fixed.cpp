@@ -106,5 +106,5 @@ const Fixed &Fixed::max(const Fixed &a, const Fixed &b) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed) {
-    return os << fixed.getRawBits() / static_cast<float>(1 << Fixed::_fractionalBits);
+    return os << fixed.toFloat();
 }
