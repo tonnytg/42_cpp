@@ -1,15 +1,25 @@
-#include <iostream>
+#ifndef SCAVTRAP_H
+#define SCAVTRAP_H
+
 #include <string>
 #include "ClapTrap.hpp"
 
-class ClapTrap {
-protected:
-    std::string name;
-    int hitPoints;
-    int energyPoints;
-    int attackDamage;
+class ScavTrap : public ClapTrap {
+
+private:
+    std::string _name;
+
 public:
-    ClapTrap(const std::string& name);
-    virtual ~ClapTrap();
-    virtual void attack() const;
+
+    ScavTrap();
+    ScavTrap(const std::string& name);
+    ~ScavTrap();
+
+    void attack(const std::string& target);
+
+    void guardGate();
+
 };
+
+
+#endif //SCAVTRAP_HPP
