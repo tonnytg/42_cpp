@@ -1,22 +1,17 @@
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef CAT_H
+#define CAT_H
+
 #include "Animal.hpp"
+#include <iostream>
+#include <string>
 
-class Cat: public Animal
-{
-	public:
-		Cat();
-		Cat(std::string const &type);
-		Cat(Cat const &cat);
-		~Cat();
+class Cat : public Animal {
+public:
+    Cat();
+    ~Cat();
+    Cat& operator=(Cat const & src);
 
-		Cat &operator=(Cat const &copy);
-
-		std::string const &getType(void) const;
-
-		void setType(std::string const &type);
-
-		void makeSound(void) const;
+    void makeSound() const;
 };
 
-#endif
+#endif //CAT_H
