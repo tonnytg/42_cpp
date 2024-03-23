@@ -1,26 +1,34 @@
+#include "Animal.h"
 #include "Dog.h"
 #include "Cat.h"
+#include "WrongAnimal.h"
+#include "WrongCat.h"
 
 int main() {
-    Animal animal;
-    Animal animal2;
 
-    Dog dog;
-    Dog dog2;
+    const Animal *animal = new Animal;
+    std::cout << animal->getType() << " " << std::endl;
+    animal->makeSound();
 
-    Cat cat;
-    Cat cat2;
+    const Dog *dog = new Dog;
+    std::cout << dog->getType() << " " << std::endl;
+    dog->makeSound();
 
-    animal.makeSound();
-    animal2 = animal;
-    animal2.makeSound();
+    const Cat *cat = new Cat;
+    std::cout << cat->getType() << " " << std::endl;
+    cat->makeSound();
 
-    dog.makeSound();
-    dog2 = dog;
-    dog2.makeSound();
+    const WrongAnimal *wrongAnimal = new WrongAnimal;
+    std::cout << wrongAnimal->getType() << " " << std::endl;
+    wrongAnimal->makeSound();
 
+    const WrongCat *wrongCat = new WrongCat;
+    std::cout << wrongCat->getType() << " " << std::endl;
+    wrongCat->makeSound();
 
-    cat.makeSound();
-    cat2 = cat;
-    cat2.makeSound();
+    delete wrongCat;
+    delete wrongAnimal;
+    delete cat;
+    delete dog;
+    delete animal;
 }
