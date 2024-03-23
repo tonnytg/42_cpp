@@ -19,14 +19,14 @@ void WrongAnimal::setType(const std::string& type) {
 
 WrongAnimal& WrongAnimal::operator=(WrongAnimal const & src)
 {
+    std::cout << "WrongAnimal copy assignment operator called" << std::endl;
     if (this == &src) {
         return *this;
     }
 
-    std::cout << "WrongAnimal copy assignment operator called" << std::endl;
     return *this;
 }
 
 void WrongAnimal::makeSound() const {
-    std::cout << this->getType() << " makes some wrong noises ASFGASFADS!" << std::endl;
+    std::cout << this->getType() << " makes some noises" << std::endl;
 }
