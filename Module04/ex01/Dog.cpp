@@ -2,7 +2,7 @@
 
 Dog::Dog() {
     this->setType("Dog");
-    this->_brain = new Brain();
+	this->_brain = new Brain();
     std::cout << "Dog constructor called" << std::endl;
 };
 
@@ -12,8 +12,14 @@ Dog::Dog(const Dog *dog) {
     std::cout << "Dog constructor called" << std::endl;
 }
 
+Dog::Dog(const Dog &other) {
+    this->setType(other.getType());
+    this->_brain = new Brain(other.getBrain());
+    std::cout << "Dog copy constructor called" << std::endl;
+}
+
 Dog::~Dog() {
-    delete _brain;
+	delete this->_brain;
     std::cout << "Dog deconstruction called" << std::endl;
 };
 
@@ -24,8 +30,7 @@ Dog& Dog::operator=(Dog const & src)
         return *this;
     }
 
-    delete _brain;
-    this->_brain = new Brain(*src._brain);
+    this->_brain = src._brain;
     this->_type = src._type;
     return *this;
 }

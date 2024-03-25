@@ -3,32 +3,44 @@
 #include "Cat.hpp"
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
+#include <iostream>
 
 int main() {
 
-    const Animal *animal = new Animal;
-    std::cout << animal->getType() << " " << std::endl;
-    animal->makeSound();
+	Animal *animal = new Animal();
+	animal->makeSound();
 
-    const Dog *dog = new Dog;
-    std::cout << dog->getType() << " " << std::endl;
+    Animal *dog = new Dog();
     dog->makeSound();
 
-    const Cat *cat = new Cat;
-    std::cout << cat->getType() << " " << std::endl;
-    cat->makeSound();
+	Animal *cat = new Cat();
+	cat->makeSound();
 
-    const WrongAnimal *wrongAnimal = new WrongAnimal;
-    std::cout << wrongAnimal->getType() << " " << std::endl;
-    wrongAnimal->makeSound();
+	WrongAnimal *cat2 = new WrongCat;
+	cat2->makeSound();
 
-    const WrongCat *wrongCat = new WrongCat;
-    std::cout << wrongCat->getType() << " " << std::endl;
-    wrongCat->makeSound();
+	WrongCat *cat3 = new WrongCat;
+	cat3->makeSound();
 
-    delete wrongCat;
-    delete wrongAnimal;
-    delete cat;
+	std::cout << "------- ANIMAL HORDE --------" << std::endl;
+	Animal *animals[4];
+	for (int i = 0; i < 4; i++) {
+			if (i % 2 == 0)
+					animals[i] = new Dog();
+			else
+					animals[i] = new Cat();
+	}
+
+	for (int i = 0; i < 4; i++)
+			animals[i]->makeSound();
+
+	std::cout << "------- TOTAL DESTRUCTION --------" << std::endl;
+	for (int i = 0; i < 4; i++)
+			delete animals[i];
+
+	delete animal;
     delete dog;
-    delete animal;
+	delete cat;
+	delete cat2;
+	delete cat3;
 }

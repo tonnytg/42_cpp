@@ -12,7 +12,8 @@ private:
 public:
     Cat();
 	Cat(const Cat *cat);
-    virtual ~Cat();
+	Cat(const Cat &other);
+    ~Cat();
     Cat& operator=(Cat const & src);
 
     Brain getBrain() const;

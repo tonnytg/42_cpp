@@ -6,9 +6,9 @@
 class WrongCat : public WrongAnimal {
 public:
     WrongCat();
-    ~WrongCat();
+	~WrongCat();
 
-    void makeSound() const;
+	void makeSound() const;
 };
 
 #endif //WRONGCAT_H

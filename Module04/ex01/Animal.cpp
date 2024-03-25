@@ -5,6 +5,11 @@ Animal::Animal() {
     this->setType("Animal");
 };
 
+Animal::Animal(const Animal &other) {
+    this->setType(other.getType());
+    std::cout << "Animal copy constructor called" << std::endl;
+}
+
 Animal::~Animal() {
     std::cout << "Animal deconstruction called" << std::endl;
 };

@@ -11,8 +11,9 @@ private:
 
 public:
     WrongCat();
-	WrongCat(const WrongCat *wrongcat);
-    virtual ~WrongCat();
+	WrongCat(const WrongCat *wrongCat);
+	WrongCat(const WrongCat &other);
+    ~WrongCat();
     WrongCat& operator=(WrongCat const & src);
 
     Brain getBrain() const;

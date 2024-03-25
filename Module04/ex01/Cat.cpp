@@ -12,6 +12,13 @@ Cat::Cat(const Cat *cat) {
     std::cout << "Cat constructor called" << std::endl;
 }
 
+Cat::Cat(const Cat &other) {
+    this->setType(other.getType());
+    this->_brain = new Brain(other.getBrain());
+    std::cout << "Cat copy constructor called" << std::endl;
+}
+
+
 Cat::~Cat() {
     delete this->_brain;
     std::cout << "Cat deconstruction called" << std::endl;
